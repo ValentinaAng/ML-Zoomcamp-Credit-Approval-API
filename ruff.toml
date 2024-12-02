@@ -1,0 +1,24 @@
+target-version = "py312"
+line-length = 100
+
+# Linting rules
+[lint]
+select = ['ALL']
+ignore = [
+          'ISC001', # Checks for implicitly concatenated strings on a single line
+          'D100', # Ignore missing docstring 
+          'D101',
+          'D102',
+          'D103', 
+          'D104', 
+          'D105',
+          'D106',
+          'D107',
+          'G004', # Logging statement uses f-string
+          'E501', # Line too long
+          'N803', # Lowercase
+          'N806' # Lowercase
+          ]
+
+[lint.pydocstyle]
+convention = "google"
