@@ -6,6 +6,8 @@
 
 ![Project Image](https://www.indostarhfc.com/images/blogs/The-Role-of-Credit-Score-in-Home-Construction-Loan-Approval.jpg)
 
+__________
+
 ## Project Description:  
 This dataset provides information that helps us identify patterns and develop a model to determine whether a credit application will be approved.   
 
