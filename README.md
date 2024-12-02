@@ -23,13 +23,13 @@ This dataset provides information that helps us identify patterns and develop a 
 
 ## Installation
 
-To get started with the project, you need to set up the environment and install the required dependencies.
+To get started with the project, you need to set up the environment and install the required dependencies (pyproject.toml).
 
 ### Prerequisites
 
-- Python 3.x
-- Poetry (for dependency management)
-- Git (optional, if cloning the repository)
+- **Python** 3.12
+- **Docker** - To containerize the application and deploy it to Cloud Run.
+- **Git** (optional, if cloning the repository)
 
 ### Setup
 
