@@ -117,7 +117,7 @@ if __name__ == "__main__":
     version = get_next_version()
 
     # Get the data
-    data_path = Path("C:/Users/Dell/ML-Zoomcamp/data/data_cleaned.csv")
+    data_path = Path("../data/data_cleaned.csv")
 
     # Model path
     MODEL_PATH = f"best_model_v{version}.pkl"
