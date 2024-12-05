@@ -17,8 +17,12 @@ ignore = [
           'G004', # Logging statement uses f-string
           'E501', # Line too long
           'N803', # Lowercase
-          'N806' # Lowercase
+          'N806', # Lowercase
+          'S101'
           ]
 
 [lint.pydocstyle]
 convention = "google"
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
