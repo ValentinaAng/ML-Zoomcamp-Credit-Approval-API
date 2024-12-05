@@ -10,6 +10,8 @@ __________
 
 ## Project Description:  
 This dataset provides information that helps us identify patterns and develop a model to determine whether a credit application will be approved.   
+In this project we are using FastAPI application that includes an endpoint which accepts a InputData model and returns the prediction.
+ - **API Endpoint:** `prediction/`
 
 ## Table of Contents
 
@@ -22,6 +24,8 @@ This dataset provides information that helps us identify patterns and develop a 
     - [Setup](#setup)
   - [Usage](#usage)
     - [Running the Project](#running-the-project)
+  - [Deployment Instructions](#deployment-instructions)
+  - [Components](#components)
 
 ## Installation
 
@@ -30,7 +34,8 @@ To get started with the project, you need to set up the environment and install 
 ### Prerequisites
 
 - **Python** 3.12
-- **Docker** - To containerize the application and deploy it to Cloud Run.
+- **Docker** - To containerize the application and deploy it to AWS Beanstalk.
+- **AWS CLI** - For interacting with AWS install AWS CLI
 - **Git** (optional, if cloning the repository)
 
 ### Setup
@@ -38,7 +43,7 @@ To get started with the project, you need to set up the environment and install 
 1. **Clone the repository:**
 
     ```bash
-    git clone https://github.com/your-username/your-repository.git
+    git clone https://github.com/ValentinaAng/ML-Zoomcamp
     cd your-repository
     ```
 
@@ -55,11 +60,6 @@ To get started with the project, you need to set up the environment and install 
     ```bash
     poetry shell
     ```
-
-4. **(Optional) Install additional dependencies or development tools:**
-
-    If there are any additional steps for setting up tools like Jupyter notebooks or Docker, they should be listed here.
-
 ## Usage
 
 ### Running the Project
@@ -68,3 +68,8 @@ After setting up the environment, you can run the project by executing the follo
 
 ```bash
 python main.py
+
+## Deployment Instructions
+
+
+## Components
