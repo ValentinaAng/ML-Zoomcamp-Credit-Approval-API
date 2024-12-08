@@ -1,6 +1,7 @@
 import pandas as pd
 import structlog
 from fastapi import APIRouter
+
 from app.schemas.input_schema import InputData
 from app.schemas.output_schema import OutputData
 from app.services.latest_model import load_model
