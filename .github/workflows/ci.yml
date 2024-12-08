@@ -1,0 +1,44 @@
+name: Continuous Integration Workflow
+
+on:
+    push:
+        branches:
+            - "**"  # Trigger on all branches
+
+jobs:
+    ruff_check:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Check out repository
+              uses: actions/checkout@v4
+
+            - name: Set up Python
+              id: setup-python
+              uses: actions/setup-python@v5
+              with:
+                python-version: 3.12
+
+            - name: Install Poetry
+              run: |
+                python -m pip install poetry==1.1.11
+
+            - name: Cache poetry virtualenv
+              uses: actions/cache@v2
+              with:
+                path: ./.venv
+                key: ${{ runner.os }}-venv-${{ hashFiles('**/poetry.lock') }}
+                restore-keys: |
+                  ${{ runner.os }}-venv-
+
+            - name: Install dependencies
+              run: |
+                poetry install --no-interaction --prefer-simple  # Optimize install to avoid unnecessary prompts
+
+            - name: Run Ruff check
+              run: |
+                poetry run ruff check .  # Make sure Ruff is configured to lint all files in the repo
+
+            - name: Run tests
+              run: |
+                poetry run pytest -v tests/  # Running tests from the 'tests' directory
