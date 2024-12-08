@@ -1,18 +1,23 @@
+import json
+from pathlib import Path
+
+import pytest
 from fastapi import status
 from fastapi.testclient import TestClient
-import pytest
+
 from app.main import app
-import json
 
 
 # Define test client
 @pytest.fixture
-def client():
+def client() -> TestClient:
     return TestClient(app)
 
 
 # Load test data from file
-with open("./data/test_data.json") as f:
+file_path = Path("tests/data/test_data.json")
+
+with file_path.open("r") as f:
     test_data = json.load(f)
 
 
