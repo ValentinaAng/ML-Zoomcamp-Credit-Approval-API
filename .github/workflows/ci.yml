@@ -19,25 +19,21 @@ jobs:
               with:
                 python-version: 3.12
 
-            - name: Install poetry
-              run: |
-                python -m pip install poetry==1.1.11  
-            
-            - name: Install six module
-              run: |
-                python -m pip install six  # Install the six module
-
-            - name: Cache poetry virtualenv
-              uses: actions/cache@v2
+            - name: Install and configure Poetry
+              uses: snok/install-poetry@v1
               with:
-                path: ./.venv
-                key: ${{ runner.os }}-venv-${{ hashFiles('**/poetry.lock') }}
-                restore-keys: |
-                  ${{ runner.os }}-venv-
+                installation-arguments: --git https://github.com/python-poetry/poetry.git@69bd6820e320f84900103fdf867e24b355d6aa5d
+            
+            - name: Load cached venv
+              id: cached-poetry-dependencies
+              uses: actions/cache@v4
+              with:
+                path: .venv
+                key: venv-${{ runner.os }}-${{ steps.setup-python.outputs.python-version }}-${{ hashFiles('**/poetry.lock') }}
 
             - name: Install dependencies
-              run: |
-                poetry install --no-interaction --prefer-simple  
+              if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
+              run: poetry install --no-interaction --no-root
 
             - name: Run Ruff check
               run: |
