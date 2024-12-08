@@ -3,8 +3,9 @@ from contextlib import asynccontextmanager
 
 import structlog
 import uvicorn
-from app.config.logging_config import configure_logging
 from fastapi import FastAPI
+
+from app.config.logging_config import configure_logging
 from app.routers.predict_route import router
 
 
