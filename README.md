@@ -77,6 +77,7 @@ After setting up the environment, you can run the project by executing the follo
 
 ```bash
 python main.py
+```
 
 ## Deployment to AWS Instructions
 
