@@ -1,5 +1,9 @@
+# Linting rules
 target-version = "py312"
 line-length = 100
+
+# Exclude .ipynb files from ruff checks
+exclude = ["**/*.ipynb"]
 
 # Linting rules
 [lint]
@@ -23,6 +27,3 @@ ignore = [
 
 [lint.pydocstyle]
 convention = "google"
-
-[tool.pytest.ini_options]
-pythonpath = ["."]
