@@ -1,5 +1,9 @@
+# Linting rules
 target-version = "py312"
 line-length = 100
+
+# Exclude .ipynb files from ruff checks
+exclude = ["**/*.ipynb"]
 
 # Linting rules
 [lint]
@@ -17,7 +21,8 @@ ignore = [
           'G004', # Logging statement uses f-string
           'E501', # Line too long
           'N803', # Lowercase
-          'N806' # Lowercase
+          'N806', # Lowercase
+          'S101'
           ]
 
 [lint.pydocstyle]

@@ -1,10 +1,24 @@
+from collections.abc import AsyncGenerator
+from contextlib import asynccontextmanager
+
+import structlog
 import uvicorn
 from fastapi import FastAPI
 
+from app.config.logging_config import configure_logging
 from app.routers.predict_route import router
 
+
+@asynccontextmanager
+async def lifespan(app: FastAPI) -> AsyncGenerator[None, None]:  # noqa: ARG001
+    configure_logging()
+    logger = structlog.get_logger()
+    logger.info("Starting the FastAPI app")
+    yield
+
+
 # Define app
-app = FastAPI()
+app = FastAPI(lifespan=lifespan)
 
 
 # Define routes

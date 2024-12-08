@@ -1,0 +1,22 @@
+{
+    "checking_status": "0_checking",
+    "duration": 24,
+    "credit_history": "Delay_in_past",
+    "purpose": "business",
+    "credit_amount": 2745,
+    "savings_status": "<100DM",
+    "employment": "<1yr",
+    "installment_commitment": 1,
+    "personal_status": "female_divorced/separated/married",
+    "other_parties": "guarantor",
+    "residence_since": 2,
+    "property_magnitude": "car_or_other_nonsavings",
+    "age": 27,
+    "other_payment_plans": "none",
+    "housing": "for_free",
+    "existing_credits": 1,
+    "job": "skilled_employee/official",
+    "num_dependents": 2,
+    "own_telephone": "yes",
+    "foreign_worker": "yes"
+}
