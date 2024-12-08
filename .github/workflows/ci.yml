@@ -23,9 +23,9 @@ jobs:
               run: |
                 python -m pip install poetry==1.1.11
 
-            - name: Install required dependencies (e.g., 'six' for compatibility)
+            - name: Install `six` module
               run: |
-                python -m pip install six  # Install the 'six' package to fix compatibility issue
+                python -m pip install six
 
             - name: Cache poetry virtualenv
               uses: actions/cache@v2
@@ -37,13 +37,14 @@ jobs:
 
             - name: Install dependencies
               run: |
-                poetry install --no-interaction --prefer-simple
+                poetry install --no-interaction --prefer-simple 
 
             - name: Run Ruff check
               run: |
-                poetry run ruff check . 
+                poetry run ruff check .  
 
             - name: Run tests
               run: |
                 poetry run pytest -v tests/ 
+
 
