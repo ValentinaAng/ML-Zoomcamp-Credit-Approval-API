@@ -24,13 +24,14 @@ In this project we are using FastAPI application that includes an endpoint which
     - [Setup](#setup)
   - [Usage](#usage)
     - [Running the Project](#running-the-project)
+    - [Test App](#test-app)
   - [Deployment to AWS Instructions](#deployment-to-aws-instructions)
   - [Components](#components)
     - [Main Application Files](#main-application-files)
-    - [Routes](#routes)
-    - [Pydantic Models (Schemas)](#pydantic-models-schemas)
-    - [Services](#services)
     - [Tests](#tests)
+    - [Data](#data)
+    - [Models](#models)
+    - [Notebooks](#notebooks)
     - [Other Key Files](#other-key-files)
 
 ## Installation
@@ -79,15 +80,23 @@ After setting up the environment, you can run the project by executing the follo
 python main.py
 ```
 
+### Test App
+
+You can test the application using tools like Postman or Thunder Client. Alternatively, you can visit http://localhost:8000/docs to access the automatically generated API documentation. This interface allows you to interact with the API endpoints directly in your browser.
+
+Test data is provided in the `tests/data/test_data.json` file. You can copy the data from this file and use it with any of the mentioned testing approaches.
+
+
 ## Deployment to AWS Instructions
 
 1. **Create AWS Account** 
 2. **Manage IAM user permissions**
-3. **Install AWS CLI** Installation link: https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html
-4. **Configure the AWS CLI** `aws configure`
-
+3. **Install AWS CLI** - Installation link: https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html
+4. **Configure the AWS CLI** - using command: `aws configure`
+5. (Optionally) **You can use the commands defined in Taskfile and run them in the terminal**
+   
 **Deploy using Taskfile** 
-  - To run tasks separately, use the following command: task <task_name>. Additionaly, it can be used to run all three tasks at the same time, with the following command: task full_deploy
+  - To run tasks separately, use the following command: `task <task_name>`. Additionally, it can be used to run all three tasks at the same time, with the following command: `task full_deploy`
   
 The file will:
  - Build Docker image
@@ -105,16 +114,10 @@ The application consists of the following components:
 - **main.py**: The entry point for the FastAPI app. It initializes the app and includes routes and other application-wide configurations.
 - **config/**: Directory containing configuration files for the application.
   - **logging_config.py**: Configures structured logging using `structlog` to capture detailed logs for monitoring and debugging.
-
-### Routes
 - **routers/routers.py**: Contains the application’s route definitions.
-
-### Pydantic Models (Schemas)
 - **schemas/**: Directory containing Pydantic models used for input validation and output formatting.
   - **input.py**: Contains models to validate the data coming from the client (e.g., POST requests).
   - **output.py**: Defines models for structuring the response data returned by the API.
-
-### Services
 - **services/**: Contains logic and functionalities that handle application operations outside of the routes.
   - **latest_model.py**: Includes the logic for loading and using the latest trained model for making predictions.
   - **status_response.py**: Defines the status of prediction (e.g., 0 Approved, 1 Not Approved).
@@ -122,10 +125,28 @@ The application consists of the following components:
 ### Tests
 - **tests/**: Contains unit tests for the application logic and API routes.
   - **test_main.py**: The main test suite for testing the API routes, responses
+  - **data/**
+      - **test_data.json**: Test Data
+
+### Data
+- **data/**: Contains unprocessed and processed data
+    - **dataset-credit.csv**: Raw data
+    - **data_cleaned.csv**: Processed data
+  
+### Models
+- **models/**: Contains train script and best model saved
+    - **train.py**: Script that contains data loading, data splitting, data preprocessing and model training functions
+    - **best_model_v1.0.pkl**: Best model saved
+    - **version.txt**: Latest saved model version
+  
+### Notebooks
+- **notebooks/**: Python notebook
+    - **CreditApprovalClassification.ipynb**: This notebook contains full code from data analysis, data preprocessing, eda, data cleaning, hyperparameter optimization, training and saving the best model.
+
 
 ### Other Key Files
 - **Dockerfile**: Defines the Docker container to package and run the application in any environment.
 - **pyproject.toml**: A configuration file for the Python project, listing dependencies and setup tools.
 - **poetry.lock**: Lock file for Python dependencies, ensuring consistent package installations across different environments.
 - **ruff.toml**: Configuration file for the `ruff` linter, used for maintaining code quality and enforcing style rules.
-
+- **Taskfile**: Defines tasks to automate common project activities (so far used for building and deploying docker images).
